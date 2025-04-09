@@ -31,7 +31,8 @@ pub struct RateLimiterAdapter(leaky_bucket::RateLimiter);
 /// Request rate-limiting middleware.
 pub type Middleware = reqwest_ratelimit::Middleware<RateLimiterAdapter>;
 
-#[async_trait]
+#[cfg_attr(feature = "wasm"), #[async_trait(?Send)]]
+#[cfg_attr(not(feature = "wasm")), #[async_trait]]
 impl reqwest_ratelimit::RateLimiter for RateLimiterAdapter {
     async fn acquire_permit(&self) { self.0.acquire_one().await }
 }
