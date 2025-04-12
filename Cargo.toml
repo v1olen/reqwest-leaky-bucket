@@ -12,7 +12,7 @@ categories = ["web-programming::http-client"]
 [dependencies]
 async-trait = "0.1"
 leaky-bucket = "1"
-reqwest-ratelimit = { git = "https://github.com/v1olen/reqwest-ratelimit.git" }
+reqwest-ratelimit = { git = "https://github.com/v1olen/reqwest-ratelimit.git?" }
 
 [dev-dependencies]
 reqwest = { version = "0.12", default-features = false }
